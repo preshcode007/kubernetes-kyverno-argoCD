@@ -1,24 +1,18 @@
-# Enforce Automated k8s cluster security using kyverno policy generator and argocd
+![project diagram](./assets/Untitled%20Diagram-Page-2.drawio.png)
+# The AntAuthority Project
 
-In this project, I enforced policies, governence and compliance on an AWS kubernetes cluster. 
+## This project automates Kubernetes Cluster Security using  Kyverno Policy Generator and ArgoCD. 
+The project was implemented on AWS Cloud and could be implemented on other Cloud Service Providers as well.
 
-To explain the project with examples, using this configuration you can 
-
-1. Generate -> For example, Create a default network policy whenever a namespace is created.
-2. Validate -> For example, Block users from using `latest` tag in the deployment or pod resources.
-3. Mutate -> For example, Attach pod security policy for a pod that is created without any pod security policy configuration.
-4. Verify Images -> For example, Verify if the Images used in the pod resources are properly signed and verified images.
 
 ## High Level Design
 
-On a very high level, A DevOps Engineer will write the required Kyverno Policy custom resource and commits it to a Git repository. Argo CD which is pre configured with `auto-sync` to watch for resources in the git repo, deploys the Kyverno Policies on to the Kubernetes cluster.
-
-![Screenshot 2023-02-19 at 12 40 48 PM](https://user-images.githubusercontent.com/43399466/219934201-b542599a-7f8a-4b72-a1bf-5db6ba1bfade.png)
+On a very high level, I wrote the required Kyverno Policy custom resource and committed it to a Git repository. ArgoCD which is pre configured with `auto-sync` watches for resources in the git repo and then deploys the Kyverno Policies on to the Kubernetes cluster.
 
 
 ## Installation
 
-To setup this project you need to install Argo CD controller and Kyverno controller, Assuming you have Kubernetes installed.
+To setup this project you need to install ArgoCD controller and Kyverno controller, Assuming you have Kubernetes installed.
 
 Installation of both Kyverno and Argo CD are pretty straight forward as both of them support Helm charts and also provide a consolidated 
 installation yaml files. 
